@@ -3,7 +3,7 @@ add name=ether1-speed-check policy=read,write,test source=":local speed [/interf
 :if (\$speed = \"10Mbps\") do={\
     :local botToken \"123456789:ABCDefghijklmn_OPQRST-uvwxyz\";\
     :local chatId \"987654321\";\
-    :local message \" ether1 10 Mbps'te çalışıyor";\
-    :log warning \"ether1 10 Mbps'te çalışıyor";\
+    :local message \" ether1 10 Mbps'te calisiyor";\
+    :log warning \"ether1 10 Mbps'te calisiyor";\
     /tool fetch url=(\"https://api.telegram.org/bot\" . \$botToken . \"/sendMessage?chat_id=\" . \$chatId . \"&text=\" . \$message) keep-result=no;\
 }"
