@@ -1,0 +1,9 @@
+/system script
+add name=ether1-speed-check policy=read,write,test source=":local speed [/interface ethernet get [find name=\"ether1\"] speed];\
+:if (\$speed = \"10Mbps\") do={\
+    :local botToken \"123456789:ABCDefghijklmn_OPQRST-uvwxyz\";\
+    :local chatId \"987654321\";\
+    :local message \" ether1 10 Mbps'te çalışıyor";\
+    :log warning \"ether1 10 Mbps'te çalışıyor";\
+    /tool fetch url=(\"https://api.telegram.org/bot\" . \$botToken . \"/sendMessage?chat_id=\" . \$chatId . \"&text=\" . \$message) keep-result=no;\
+}"
