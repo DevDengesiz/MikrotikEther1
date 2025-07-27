@@ -7,3 +7,7 @@ add name=ether1-hiz-kontrol policy=read,write,test source=":local speed [/interf
     :log warning \"ether1 10 Mbps'te calisiyor";\
     /tool fetch url=(\"https://api.telegram.org/bot\" . \$botToken . \"/sendMessage?chat_id=\" . \$chatId . \"&text=\" . \$message) keep-result=no;\
 }"
+
+
+/system scheduler
+add name=ether1-hiz-takibi interval=5s on-event="/system script run ether1-hiz-kontrol"
