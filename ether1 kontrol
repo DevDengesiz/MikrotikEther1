@@ -1,0 +1,14 @@
+/system script
+add name=ether1-kontrolu policy=read,write,test source=":local currentState [/interface ethernet get [find name=\"ether1\"] running];\
+:if (\$currentState = false) do={\
+    :local botToken \"123456789:ABCDefghijklmn_OPQRST-uvwxyz\";\
+    :local chatId \"987654321\";\
+    :local message \"uyari: ether1 calismiyor\";\
+    :log warning \"uyari: ether1 calismiyor\";\
+    /tool fetch url=(\"https://api.telegram.org/bot\" . \$botToken . \"/sendMessage?chat_id=\" . \$chatId . \"&text=\" . \$message) keep-result=no;\
+}"
+
+
+
+/system scheduler
+add name=ether1-durum-takibi interval=5s on-event="/system script run ether1-kontrolu"
