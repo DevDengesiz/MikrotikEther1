@@ -10,4 +10,4 @@ add name=ether1-hiz-kontrol policy=read,write,test source=":local speed [/interf
 
 
 /system scheduler
-add name=ether1-hiz-takibi interval=5s on-event="/system script run ether1-hiz-kontrol"
+add name=ether1-hiz-takibi interval=1m on-event="/system script run ether1-hiz-kontrol"
