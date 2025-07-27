@@ -1,0 +1,2 @@
+:local rate [/interface ethernet monitor ether1 once as-value]; 
+:if ([:pick ($rate->"rate") 0 6] = "10Mbps") do={ /log warning message="uyari: ether1 rate 10mbps oldu" }
